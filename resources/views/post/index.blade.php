@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>INDEX</h1>
+    <nav>
+        <!-- <a href="/post/create">新增</a> -->
+        <a href="{{route('post.create')}}">新增</a>
+    </nav>
     @foreach($posts as $post)
         <h2>{{$post->title}}</h2>
         <div>
@@ -15,6 +19,11 @@
         <div>
             最後更新時間:{{$post->updated_at}}
         </div>
+        <form action="{{route('post.destroy',['id' => $post->id])}}" method="post">
+            @csrf
+            @method('delete')
+            <input type="submit" value="刪除">
+        </form>
     @endforeach
 </body>
 </html>
