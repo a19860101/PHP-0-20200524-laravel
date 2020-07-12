@@ -28,3 +28,5 @@ Route::get('/post/{id}/banana/{user}',function($id,$user){
     // return view('post')->with('id',$id);
 
 });
+Route::get('/post','PostController@test');
+Route::get('/post/asdf','PostController@asdf');
