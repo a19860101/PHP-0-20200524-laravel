@@ -58,7 +58,8 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        return view('post.show');
+        $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
+        return view('post.show',compact('posts'));
     }
 
     /**
@@ -94,5 +95,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
+        return redirect('post');
     }
 }

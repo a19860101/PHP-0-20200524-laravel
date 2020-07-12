@@ -24,6 +24,7 @@
             @method('delete')
             <input type="submit" value="刪除">
         </form>
+        <a href="{{route('post.show',['id' => $post->id])}}">檢視</a>
     @endforeach
 </body>
 </html>
