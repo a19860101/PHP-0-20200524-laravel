@@ -21,7 +21,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/post/{id}',function($id){
+Route::get('/post/{id}/banana/{user}',function($id,$user){
     // return 'post'.$id;
-    return view('post',compact('id'));
+    return view('post',compact('id','user'));
+    // return view('post',['id' => $id , 'user' => $user]);
+    // return view('post')->with('id',$id);
+
 });

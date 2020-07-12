@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>POST</h1>
-    {{ $id }}
+    {{ $id }} / {{ $user }}
 </body>
 </html>
