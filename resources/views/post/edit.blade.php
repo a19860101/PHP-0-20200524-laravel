@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>POST</h1>
-    {{ $id }} / {{ $user }}
+    <h1>EDIT</h1>
 </body>
 </html>

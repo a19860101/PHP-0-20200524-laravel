@@ -21,12 +21,17 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/post/{id}/banana/{user}',function($id,$user){
-    // return 'post'.$id;
-    return view('post',compact('id','user'));
-    // return view('post',['id' => $id , 'user' => $user]);
-    // return view('post')->with('id',$id);
+Route::resource('/post','PostController');
+// Route::get('/post','PostController@index');
+// Route::get('/post/create','PostController@create');
+// Route::get('/post/{id}','PostController@store');
 
-});
-Route::get('/post','PostController@test');
-Route::get('/post/asdf','PostController@asdf');
+// Route::get('/post/{id}/banana/{user}',function($id,$user){
+    // return 'post'.$id;
+    // return view('post',compact('id','user'));
+    // return view('post',['id' => $id , 'user' => $user]);
+    // return view('post')->with('id',$id);`
+
+// })
+// Route::get('/post','PostController@test');
+// Route::get('/post/asdf','PostController@asdf');
