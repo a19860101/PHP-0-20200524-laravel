@@ -4,7 +4,6 @@
     我是首頁
 @endsection
 @section('main')
-
     <h1>INDEX</h1>
     @foreach($posts as $post)
         <h2>{{$post->title}}</h2>
