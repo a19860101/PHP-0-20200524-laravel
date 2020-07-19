@@ -53,12 +53,18 @@ class PostController extends Controller
         //     now()
         // ]);
 
-        DB::table('posts')->insert([
-            'title'     => $request->title,
-            'content'   => $request->content,
-            'created_at'=> now(),
-            'updated_at'=> now()
-        ]);
+        // DB::table('posts')->insert([
+        //     'title'     => $request->title,
+        //     'content'   => $request->content,
+        //     'created_at'=> now(),
+        //     'updated_at'=> now()
+        // ]);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+        
 
         return redirect('post');
     }
