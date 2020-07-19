@@ -6,10 +6,6 @@
 @section('main')
 
     <h1>INDEX</h1>
-    <nav>
-        <!-- <a href="/post/create">新增</a> -->
-        <a href="{{route('post.create')}}">新增</a>
-    </nav>
     @foreach($posts as $post)
         <h2>{{$post->title}}</h2>
         <div>
