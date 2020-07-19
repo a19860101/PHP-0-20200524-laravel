@@ -85,7 +85,9 @@ class PostController extends Controller
     {
         //
         // $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
-        $post = DB::table('posts')->find($id);
+        // $post = DB::table('posts')->find($id);
+        $post = DB::table('posts')->where('id',$id)->first();
+
         return view('post.edit',compact('post'));
     }
 
@@ -122,7 +124,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-        DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
+        // DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
+        DB::table('posts')->where('id',$id)->delete();
         return redirect('post');
     }
 }
