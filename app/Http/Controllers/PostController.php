@@ -113,8 +113,8 @@ class PostController extends Controller
         //
         // $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
         // $post = DB::table('posts')->find($id);
-        $post = DB::table('posts')->where('id',$id)->first();
-
+        // $post = DB::table('posts')->where('id',$id)->first();
+        $post = Post::findOrFail($id);
         return view('post.edit',compact('post'));
     }
 
@@ -134,11 +134,20 @@ class PostController extends Controller
         //     now(),
         //     $id
         // ]);
-        DB::table('posts')->where('id',$id)->update([
-            'title'     => $request->title,
-            'content'   => $request->content,
-            'updated_at'=> now()
-        ]);
+
+        // DB::table('posts')->where('id',$id)->update([
+        //     'title'     => $request->title,
+        //     'content'   => $request->content,
+        //     'updated_at'=> now()
+        // ]);
+        
+        $post = Post::findOrFail($id);
+        $post->fill($request->all());
+        // $post->fill([
+        //     'title'=>$request->title
+        // ]);
+        $post->save();
+        
         return redirect('post');
     }
 
@@ -152,7 +161,13 @@ class PostController extends Controller
     {
         //
         // DB::delete('DELETE FROM posts WHERE id = ?',[$id]);
-        DB::table('posts')->where('id',$id)->delete();
+        // DB::table('posts')->where('id',$id)->delete();
+        
+        // $post = Post::findOrFail($id);
+        // $post->delete();
+
+        Post::destroy($id);
+
         return redirect('post');
     }
 }
