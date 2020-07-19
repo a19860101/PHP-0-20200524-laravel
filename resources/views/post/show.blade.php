@@ -13,7 +13,7 @@
             </div>
             <div>
                 最後更新時間:{{$post->updated_at}}
-            </div>
+            </div> 
             <a href="#" class="btn btn-primary btn-sm" onclick="history.back()">回上頁</a>
         </div>
     </div>
