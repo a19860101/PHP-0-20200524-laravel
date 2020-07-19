@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Post;
+
 class PostController extends Controller
 {
     /**
@@ -17,8 +19,10 @@ class PostController extends Controller
         //
         // $posts = DB::select('SELECT * FROM posts');
 
-        $posts = DB::table('posts')->get();
-        // return $posts;
+        // $posts = DB::table('posts')->get();
+
+        $posts = Post::all();
+        // $posts = Post::get();
         return view('post.index',compact('posts'));
     }
 
