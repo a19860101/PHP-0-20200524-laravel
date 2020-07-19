@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1>EDIT</h1>
-    @foreach($posts as $post)
     <form action="{{route('post.update',['id' => $post->id])}}" method="post">
         @csrf
         @method('put')
@@ -15,6 +14,5 @@
         <textarea name="content" id="" cols="30" rows="10">{{$post->content}}</textarea>
         <input type="submit" value="儲存">
     </form>
-    @endforeach
 </body>
 </html>

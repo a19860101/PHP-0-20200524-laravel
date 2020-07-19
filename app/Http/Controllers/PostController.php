@@ -15,7 +15,9 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = DB::select('SELECT * FROM posts');
+        // $posts = DB::select('SELECT * FROM posts');
+
+        $posts = DB::table('posts')->get();
         // return $posts;
         return view('post.index',compact('posts'));
     }
@@ -40,12 +42,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        DB::insert('INSERT INTO posts(title,content,created_at,updated_at)VALUES(?,?,?,?)',[
-            $request->title,
-            $request->content,
-            now(),
-            now()
+        // DB::insert('INSERT INTO posts(title,content,created_at,updated_at)VALUES(?,?,?,?)',[
+        //     $request->title,
+        //     $request->content,
+        //     now(),
+        //     now()
+        // ]);
+
+        DB::table('posts')->insert([
+            'title'     => $request->title,
+            'content'   => $request->content,
+            'created_at'=> now(),
+            'updated_at'=> now()
         ]);
+
         return redirect('post');
     }
 
@@ -58,8 +68,11 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
-        return view('post.show',compact('posts'));
+        // $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
+        // $post = DB::table('posts')->where('id',$id)->first();
+        $post = DB::table('posts')->find($id);
+        
+        return view('post.show',compact('post'));
     }
 
     /**
@@ -71,8 +84,9 @@ class PostController extends Controller
     public function edit($id)
     {
         //
-        $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
-        return view('post.edit',compact('posts'));
+        // $posts = DB::select('SELECT * FROM posts WHERE id = ?',[$id]);
+        $post = DB::table('posts')->find($id);
+        return view('post.edit',compact('post'));
     }
 
     /**
@@ -85,11 +99,16 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
-        DB::update('UPDATE posts SET title=?,content=?,updated_at=? WHERE id = ?',[
-            $request->title,
-            $request->content,
-            now(),
-            $id
+        // DB::update('UPDATE posts SET title=?,content=?,updated_at=? WHERE id = ?',[
+        //     $request->title,
+        //     $request->content,
+        //     now(),
+        //     $id
+        // ]);
+        DB::table('posts')->where('id',$id)->update([
+            'title'     => $request->title,
+            'content'   => $request->content,
+            'updated_at'=> now()
         ]);
         return redirect('post');
     }
