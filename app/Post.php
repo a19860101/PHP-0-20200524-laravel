@@ -8,4 +8,6 @@ class Post extends Model
 {
     //
     // protected $table = 'post';
+    //增加白名單
+    protected $fillable = ['title','content'];
 }

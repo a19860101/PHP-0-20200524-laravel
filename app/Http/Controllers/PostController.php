@@ -60,11 +60,24 @@ class PostController extends Controller
         //     'updated_at'=> now()
         // ]);
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->save();
+        // $post = new Post;
+        // $post->title = $request->title;
+        // $post->content = $request->content;
+        // $post->save();
         
+        // $post = new Post;
+        // $post->fill($request->all());
+        // $post->fill([
+        //     'title' => $request->title,
+        //     'content' => $request->content
+        // ]);
+        // $post->save();
+
+
+        Post::create($request->all());
+        // Post::create([
+        //     'title'=>$request->title,
+        // ]);
 
         return redirect('post');
     }
