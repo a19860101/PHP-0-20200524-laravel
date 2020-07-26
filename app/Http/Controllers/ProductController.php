@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
+        return view('product.index');
     }
 
     /**
@@ -44,7 +45,14 @@ class ProductController extends Controller
         $ext = $request->file('img')->getClientOriginalExtension();
         $img_name = time().'.'.$ext;
         $request->file('img')->storeAs('public/images',$img_name);
-        return 'success';
+
+        $product = new Product;
+        $product->fill($request->all());    
+        // $product->title = $request->title;
+        $product->img = $img_name; 
+        $product->save();
+        
+        return redirect('product');
     }
 
     /**
