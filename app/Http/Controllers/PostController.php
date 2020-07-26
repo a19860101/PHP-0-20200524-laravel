@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 use App\Post;
 
@@ -73,7 +74,20 @@ class PostController extends Controller
         // ]);
         // $post->save();
 
+        $request -> validate([
+            'title' => 'required | max:10',
+            'content' => 'required'
+        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'title' => 'required',
+        //     'content'=> 'required'
+        // ]);
 
+        // if ($validator->fails()) {
+        //     return redirect('post/create')
+        //             ->withErrors($validator)
+        //             ->withInput();
+        // }
         Post::create($request->all());
         // Post::create([
         //     'title'=>$request->title,

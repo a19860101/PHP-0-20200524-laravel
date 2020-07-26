@@ -9,6 +9,9 @@
                     <a class="nav-link" href="{{route('post.create')}}">新增</a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="{{route('product.index')}}">產品列表</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="{{route('product.create')}}">新增產品</a>
                 </li>
             </ul>

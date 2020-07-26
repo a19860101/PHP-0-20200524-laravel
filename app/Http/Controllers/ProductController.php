@@ -99,7 +99,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-        Storage::delete('public/'.$product->img);
+        Storage::delete('public/images/'.$product->img);
         Product::destroy($product->id);
         return redirect('product');
     }
