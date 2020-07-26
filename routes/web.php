@@ -21,7 +21,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::resource('/post','PostController');
+Route::resource('/post','PostController')->middleware('auth');
 // Route::get('/post','PostController@index');
 // Route::get('/post/create','PostController@create');
 // Route::get('/post/{id}','PostController@store');
@@ -36,3 +36,6 @@ Route::resource('/post','PostController');
 // Route::get('/post','PostController@test');
 // Route::get('/post/asdf','PostController@asdf');
 Route::resource('/product','ProductController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
