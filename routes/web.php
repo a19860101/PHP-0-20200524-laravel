@@ -21,7 +21,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::resource('/post','PostController')->middleware('auth');
+Route::resource('/post','PostController');
+Route::get('/post/create','PostController@create')->name('post.create')->middleware('auth');
 // Route::get('/post','PostController@index');
 // Route::get('/post/create','PostController@create');
 // Route::get('/post/{id}','PostController@store');

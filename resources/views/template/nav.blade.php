@@ -5,9 +5,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                @auth
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('post.create')}}">新增</a>
                 </li>
+                @endauth
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('product.index')}}">產品列表</a>
                 </li>
