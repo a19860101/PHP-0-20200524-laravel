@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     /**
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $img = $request->file('img')->getClientOriginalName();
         $ext = $request->file('img')->getClientOriginalExtension();
         $img_name = time().'.'.$ext;
-        $request->file('img')->storeAs('public/images',$img_name);
+        $request->file('img')->storeAs('/public/images',$img_name);
 
         $product = new Product;
         $product->fill($request->all());    
@@ -99,5 +99,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        Storage::delete('public/'.$product->img);
+        Product::destroy($product->id);
+        return redirect('product');
     }
 }
