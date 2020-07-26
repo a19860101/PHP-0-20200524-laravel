@@ -35,3 +35,4 @@ Route::resource('/post','PostController');
 // })
 // Route::get('/post','PostController@test');
 // Route::get('/post/asdf','PostController@asdf');
+Route::resource('/product','ProductController');
