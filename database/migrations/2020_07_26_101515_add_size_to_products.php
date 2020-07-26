@@ -28,6 +28,7 @@ class AddSizeToProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
+            $table->dropColumn('size');
         });
     }
 }
