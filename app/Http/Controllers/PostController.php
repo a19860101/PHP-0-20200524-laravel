@@ -76,18 +76,8 @@ class PostController extends Controller
 
         $request -> validate([
             'title' => 'required | max:10',
-            'content' => 'required'
+            'content' => 'required | max: 10'
         ]);
-        // $validator = Validator::make($request->all(), [
-        //     'title' => 'required',
-        //     'content'=> 'required'
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return redirect('post/create')
-        //             ->withErrors($validator)
-        //             ->withInput();
-        // }
         Post::create($request->all());
         // Post::create([
         //     'title'=>$request->title,
