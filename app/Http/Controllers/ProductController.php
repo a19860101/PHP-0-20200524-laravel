@@ -38,10 +38,13 @@ class ProductController extends Controller
     {
         //
         // $img = $request->file('img')->store('images','public');
-        $img_name = time();
-        $img = $request->file('img')->storeAs('images',$img_name);
-
-        return $img;
+        // $img_name = time();
+        // $img = $request->file('img')->storeAs('images',$img_name);
+        $img = $request->file('img')->getClientOriginalName();
+        $ext = $request->file('img')->getClientOriginalExtension();
+        $img_name = time().'.'.$ext;
+        $request->file('img')->storeAs('public/images',$img_name);
+        return 'success';
     }
 
     /**
