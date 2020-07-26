@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
         <h1>CREATE PRODUCT</h1>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="">產品標題</label>
